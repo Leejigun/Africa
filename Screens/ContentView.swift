@@ -8,11 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    let animals: [Animal] = Bundle.main.decode("animals.json") ?? []
+    
     var body: some View {
         NavigationView {
             List {
+                // MARK: - Header
                 CoverImageView()
                     .frame(height: 300)
+                
+                // MARK: - List
+                ForEach(animals) { item in
+                    AnimalListItemView(animal: item)
+                }
             }
             .listStyle(.plain)
             .navigationTitle("Africa")
