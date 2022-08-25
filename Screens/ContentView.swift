@@ -9,8 +9,15 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("ContentView")
-            .padding()
+        NavigationView {
+            List {
+                CoverImageView()
+                    .frame(height: 300)
+            }
+            .listStyle(.plain)
+            .navigationTitle("Africa")
+            .navigationBarTitleDisplayMode(.large)
+        }
     }
 }
 
