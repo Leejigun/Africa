@@ -8,7 +8,7 @@
 import Foundation
 
 extension Bundle {
-    func decode<T: Codable>(_ file: String) -> T? {
+    private func decode<T: Codable>(_ file: String) -> T? {
         guard let url = self.url(forResource: file, withExtension: nil) else {
             assertionFailure("Failed to locate \(file) in bundle")
             return nil
@@ -27,5 +27,9 @@ extension Bundle {
         }
         
         return loaded
+    }
+    
+    func decode<T: Codable>(from localJsonData: LocalJsonData) -> T? {
+        return self.decode(localJsonData.rawValue)
     }
 }

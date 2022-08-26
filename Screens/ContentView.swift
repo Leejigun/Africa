@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    let animals: [Animal] = Bundle.main.decode("animals.json") ?? []
+    let animals: [Animal] = Bundle.main.decode(from: .animals) ?? []
     
     var body: some View {
         NavigationView {
@@ -20,7 +20,10 @@ struct ContentView: View {
                 
                 // MARK: - List
                 ForEach(animals) { item in
-                    AnimalListItemView(animal: item)
+                    
+                    NavigationLink(destination: AnimalDetailView(animal: item)) {
+                        AnimalListItemView(animal: item)
+                    }
                 }
             }
             .listStyle(.plain)
