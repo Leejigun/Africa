@@ -10,8 +10,8 @@ import SwiftUI
 struct AnimalDetailView: View {
     
     let animal: Animal
-    let location: Location? = {
-        let locations: [Location] = Bundle.main.decode(from: .locations) ?? []
+    let location: NationalParkLocation? = {
+        let locations: [NationalParkLocation] = Bundle.main.decode(from: .locations) ?? []
         return locations.first
     }()
     

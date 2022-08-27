@@ -10,13 +10,12 @@ import MapKit
 
 struct InsetMapView: View {
     
-    let location: Location
+    let location: NationalParkLocation
     @State private var region: MKCoordinateRegion
     
-    init(location: Location) {
+    init(location: NationalParkLocation) {
         self.location = location
-        self.region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude),
-                                         span: MKCoordinateSpan(latitudeDelta: 60.0, longitudeDelta: 60.0))
+        self.region = MKCoordinateRegion(center: location.location, span: MKCoordinateSpan(latitudeDelta: 60.0, longitudeDelta: 60.0))
     }
     
     var body: some View {
@@ -49,7 +48,7 @@ struct InsetMapView: View {
 }
 
 struct InsetMapView_Previews: PreviewProvider {
-    static let locations: [Location] = Bundle.main.decode(from: .locations) ?? []
+    static let locations: [NationalParkLocation] = Bundle.main.decode(from: .locations) ?? []
     static var previews: some View {
         InsetMapView(location: locations[0])
             .previewLayout(.sizeThatFits)
