@@ -53,8 +53,14 @@ struct ContentView: View {
                                 AnimalListItemView(animal: animal)
                             }
                         }
+                        HStack {
+                            Spacer()
+                            CreditsView()
+                            Spacer()
+                        }
                     }
                     .listStyle(.plain)
+                    .listRowSeparator(.hidden)
                 } else {
                     ScrollView(.vertical, showsIndicators: false) {
                         LazyVGrid(columns: gridLayout) {
